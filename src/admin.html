@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="admin.js" defer></script>
+  </head>
+  <body class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <div class="w-full max-w-7xl p-4">
+      <button
+        id="addProductButton"
+        class="bg-blue-500 text-white p-2 rounded-lg mb-4"
+      >
+        Thêm sản phẩm
+      </button>
+
+      <!-- Modal for adding/editing product -->
+      <div
+        id="productModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden"
+      >
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96 relative">
+          <!-- Close button -->
+          <button
+            id="closeModalButton"
+            class="absolute top-2 right-2 text-gray-500 hover:text-black"
+            onclick="closeModal()"
+          >
+            &times;
+          </button>
+
+          <h2 id="modalTitle" class="text-xl font-semibold mb-4">
+            Thêm sản phẩm
+          </h2>
+
+          <form id="productForm" class="flex flex-col gap-4">
+            <label for="product-image">Hình ảnh sản phẩm:</label>
+            <input
+              type="text"
+              id="product-image"
+              name="product-image"
+              placeholder="URL hình ảnh"
+              class="border p-2 rounded"
+              required
+            />
+
+            <label for="product-name">Tên sản phẩm:</label>
+            <input
+              type="text"
+              id="product-name"
+              name="product-name"
+              placeholder="Tên sản phẩm"
+              class="border p-2 rounded"
+              required
+            />
+
+            <label for="product-description">Mô tả sản phẩm:</label>
+            <input
+              type="text"
+              id="product-description"
+              name="product-description"
+              placeholder="Mô tả sản phẩm"
+              class="border p-2 rounded"
+              required
+            />
+
+            <label for="product-price">Giá sản phẩm:</label>
+            <input
+              type="number"
+              id="product-price"
+              name="product-price"
+              placeholder="Giá sản phẩm"
+              class="border p-2 rounded"
+              required
+            />
+
+            <button
+              type="submit"
+              id="submitProductButton"
+              class="bg-green-500 text-white p-2 rounded-lg mt-4"
+            >
+              Thêm sản phẩm
+            </button>
+
+            <!-- Update Button (hidden initially) -->
+            <button
+              type="button"
+              id="editProductButton"
+              class="bg-yellow-500 text-white p-2 rounded-lg mt-4 hidden"
+              onclick="updateProduct(currentEditingProduct.id)"
+            >
+              Cập nhật sản phẩm
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Bảng hiển thị sản phẩm -->
+      <div class="overflow-x-auto mt-8">
+        <table
+          id="product-table"
+          class="table-auto w-full border-collapse border border-gray-300"
+        >
+          <thead>
+            <tr>
+              <th class="border px-4 py-2 text-center">Hình ảnh</th>
+              <th class="border px-4 py-2 text-center">Tên sản phẩm</th>
+              <th class="border px-4 py-2 text-center">Mô tả</th>
+              <th class="border px-4 py-2 text-center">Giá</th>
+              <th class="border px-4 py-2 text-center">Cập nhập</th>
+            </tr>
+          </thead>
+          <tbody id="product-container"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

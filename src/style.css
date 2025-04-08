@@ -1,0 +1,34 @@
+.sidebar {
+  transition: all 0.3s;
+}
+.sidebar.collapsed {
+  width: 80px;
+}
+.sidebar.collapsed .sidebar-text {
+  display: none;
+}
+.sidebar.collapsed .logo-text {
+  display: none;
+}
+.sidebar.collapsed .menu-item {
+  justify-content: center;
+}
+.main-content {
+  transition: all 0.3s;
+}
+.main-content.expanded {
+  margin-left: 80px;
+}
+.food-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.food-card {
+  transition: all 0.3s;
+}
+.modal {
+  transition: opacity 0.3s ease;
+}
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
